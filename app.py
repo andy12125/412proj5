@@ -6,7 +6,14 @@ app = Flask(__name__)
 def hello():
 	return "Hello World"
 
-@app.route('/MD5')
+@app.route('/MD5/<text>')
+def md5hash(text):
+import hashlib
+
+hash = hashlib.md5(text.encode())
+md5 = hash.hexdigest()
+
+reaturn 'The MD5 Hash of ', text, 'is', md5
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0')
